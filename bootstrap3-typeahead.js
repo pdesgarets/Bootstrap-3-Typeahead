@@ -137,7 +137,7 @@
       if (typeof(query) != 'undefined' && query !== null) {
         this.query = query;
       } else {
-        this.query = this.$element.val() || this.$element.text() || '';
+        this.query = this.$element.val() || (this.$element[0].childNodes.length > 0 && this.$element[0].childNodes[0].nodeValue) || '';
       }
 
       if (this.query.length < this.options.minLength && !this.options.showHintOnFocus) {
@@ -273,7 +273,7 @@
         var text = self.displayText(item);
         i = $(that.options.item).data('value', item);
         i.find('a').html(that.highlighter(text, item));
-        if (text == self.$element.val() || text == self.$element.text())  {
+        if (text == self.$element.val() || text == self.$element[0].childNodes[0].nodeValue)  {
           i.addClass('active');
           self.$element.data('active', item);
           activeFound = true;
