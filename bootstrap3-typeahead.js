@@ -273,7 +273,7 @@
         var text = self.displayText(item);
         i = $(that.options.item).data('value', item);
         i.find('a').html(that.highlighter(text, item));
-        if (text == self.$element.val() || text == self.$element[0].childNodes[0].nodeValue)  {
+        if (text == self.$element.val() || (self.$element[0].childNodes.length > 0 && text == self.$element[0].childNodes[0].nodeValue))  {
           i.addClass('active');
           self.$element.data('active', item);
           activeFound = true;
